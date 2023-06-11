@@ -1,0 +1,119 @@
+#Written in 9th Grade
+#DNA codon calculator
+#take dna codon input
+#Outputs the correct codon
+
+
+dnastrand = input("Adenine = A \nGuanine = G \nThymine = T \nCytosine = C \nInput the DNA codon with the letters: ")
+codonlength = 3
+#Create mRNA codon list
+dnalist = []
+mrnalist = []
+#convert dna codon to mRNA
+for letter in dnastrand:
+  dnalist.append(letter)
+def mrnaconverter(dnalist):
+  for base in dnalist:
+    base = base.upper()
+    if base == "A":
+      mrnalist.append("U")
+    elif base == "G":
+      mrnalist.append("C")
+    elif base == "T":
+      mrnalist.append("A")
+    elif base == "C":
+      mrnalist.append("G")
+mrnaconverter(dnalist)
+mrnastrand = "".join(mrnalist)
+print(mrnastrand)
+codonlist = []
+
+for base in range(0, len(mrnastrand), 3):
+  codonlist.append(mrnastrand[base: base + codonlength])
+
+
+
+
+  
+  
+protein = []
+
+protein_dict= {
+  "AUG":"Methionine" ,
+  "AUU":"Isoleucine", 
+  "AUC":"Isoleucine", 
+  "AUA":"Isoleucine", 
+  "ACU":"Threonine",
+  "ACA":"Threonine",
+  "ACG":"Threonine", 
+  "ACC":"Threonine",
+  "AAC":"Asparaganine",
+  "AAU":"Asparaganine",
+  "AAA":"Lysine",
+  "AAG":"Lysine",
+  "AGU":"Serine",
+  "AGC":"Serine",
+  "UCU":"Serine",
+  "UCA":"Serine",
+  "UCG":"Serine",
+  "UCC":"Serine",
+  "AGA":"Arginine",
+  "AGG":"Arginine",
+  "CGU":"Arginine",
+  "CGA":"Arginine",
+  "CGG":"Arginine",
+  "CGC":"Arginine",
+  "GUU":"Valine",
+  "GUC":"Valine",
+  "GUA":"Valine",
+  "GUG":"Valine",
+  "GCU":"Alanine",
+  "GCA":"Alanine",
+  "GCG":"Alanine",
+  "GCC":"Alanine",
+  "GAU":"Aspartinine",
+  "GAC":"Aspartinine",
+  "GAG":"Glutamic Acid",
+  "GAA":"Glutamic Acid",
+  "GGU":"Glycine",
+  "GGA":"Glycine",
+  "GGG":"Glycine",
+  "GGC":"Glycine",
+  "UUU":"Phenylalanine",
+  "UUC":"Phenylalanine",
+  "UUA":"Leucine",
+  "UUG":"Leucine",
+  "CUC":"Leucine",
+  "CUA":"Leucine",
+  "CUG":"Leucine",
+  "CUU":"Leucine",
+  "UAU":"Tyrosine",
+  "UAC":"Tyrosine",
+  "UAG":"STOP CODON",
+  "UAA":"STOP CODON",
+  "UGA":"STOP CODON",
+  "UGU":"Cystinine",
+  "UGC":"Cystinine",
+  "UGG":"Tryptophan",
+  "CCU":"Proline",
+  "CCC":"Proline",
+  "CCA":"Proline",
+  "CCG":"Proline",
+  "CAU":"Histidine",
+  "CAC":"Histidine",
+  "CAA":"Glutamine",
+  "CAG":"Glutamine"
+}
+
+
+#create a slection to choose which protein
+for mrnacodon in codonlist:
+      protein.append(protein_dict[mrnacodon])
+  
+  
+
+print("_______________________________________")
+print("The codons are ", codonlist)
+print("The amino acids are",protein)
+
+
